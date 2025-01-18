@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Matches</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a th:href="@{/matches}">Matches List</a></li>
+    <li><a th:href="@{/matches/new}">Add Result</a></li>
+  </ul>
+</nav>
+<h1>Matches</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Player 1</th>
+    <th>Player 2</th>
+    <th>Winner</th>
+    <th>Score</th>
+    <th>Actions</th>
+  </tr>
+  <tr th:each="match : ${matches}">
+    <td th:text="${match.id}"></td>
+    <td th:text="${match.player1}"></td>
+    <td th:text="${match.player2}"></td>
+    <td th:text="${match.winner}"></td>
+    <td th:text="${match.score}"></td>
+    <td>
+      <div class="action-buttons">
+        <a th:href="@{/matches/{id}(id=${match.id})}" class="button">Edit</a>
+        <a th:href="@{/matches/{id}/delete(id=${match.id})}" class="button" method="delete">Delete</a>
+      </div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+``

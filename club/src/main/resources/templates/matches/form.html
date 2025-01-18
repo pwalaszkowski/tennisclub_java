@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Match Form</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a th:href="@{/matches}">Matches List</a></li>
+  </ul>
+</nav>
+<h1>Match Form</h1>
+<form th:action="@{/matches}" th:object="${match}" method="post">
+  <input type="hidden" th:field="*{id}"/>
+  <label for="player1">Player 1:</label>
+  <input type="text" id="player1" th:field="*{player1}" required/>
+  <label for="player2">Player 2:</label>
+  <input type="text" id="player2" th:field="*{player2}" required/>
+  <label for="winner">Winner:</label>
+  <input type="text" id="winner" th:field="*{winner}" required/>
+  <label for="score">Score:</label>
+  <input type="text" id="score" th:field="*{score}" required/>
+  <button type="submit">Save</button>
+</form>
+</body>
+</html>
