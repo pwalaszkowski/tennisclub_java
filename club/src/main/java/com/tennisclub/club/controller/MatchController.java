@@ -39,7 +39,7 @@ public class MatchController {
         return "matches/form";
     }
 
-    @DeleteMapping("/{id}/delete")
+    @GetMapping("/{id}/delete")
     public String deleteMatch(@PathVariable Long id) {
         matchService.deleteById(id);
         return "redirect:/matches";
