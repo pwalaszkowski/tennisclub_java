@@ -5,14 +5,16 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<div style="text-align: center; padding: 20px;">
+<div th:include="fragments/nav.html"></div>
+<form>
     <h1>Oops! Something went wrong.</h1>
     <p th:text="'Error Code: ' + ${status}"></p>
     <p th:text="${error}"></p>
-    <p th:text="'Message: ' + ${message}"></p>
     <p>
-        <a th:href="@{/}">Go Back to Home</a>
+        <a th:href="@{/}" class="default-link">Go Back to Home</a>
     </p>
+</form>
 </div>
+<footer th:insert="fragments/footer.html"></footer>
 </body>
 </html>

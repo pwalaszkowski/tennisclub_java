@@ -13,6 +13,14 @@ h1 {
     margin-top: 20px;
 }
 
+p {
+    text-align: center;
+    margin: 20px auto;
+    line-height: 1.6;
+    max-width: 80%;
+    color: #333;
+}
+
 /* Navigation Styles */
 nav {
     background-color: #2ecc71;
@@ -162,4 +170,16 @@ form input:focus {
     font-size: 0.9em;
     background-color: #f8f9fa;
     border-top: 1px solid #ddd;
+}
+
+/* Link Styles */
+a.default-link {
+    color: #27ae60;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a.default-link:hover {
+    text-decoration: underline;
+    color: #27ae60;
 }

@@ -1,3 +1,10 @@
+# TODO:
+Refactor README
+Refactor Styling
+Add maybe some fancy stuff to page
+
+
+
 # Tech Stack
 
 * Java 17
