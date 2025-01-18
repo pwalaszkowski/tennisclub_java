@@ -5,13 +5,11 @@
   <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<nav>
-  <ul>
-    <li><a th:href="@{/matches}">Matches List</a></li>
-    <li><a th:href="@{/matches/new}">Add Result</a></li>
-  </ul>
-</nav>
+<div th:include="fragments/nav.html"></div>
+<form>
 <h1>Matches</h1>
+<div th:include="fragments/success.html"></div>
+<center><p>Do not see the results?<a th:href="@{/matches/new}" class="button">Add Result</a></p></center>
 <table>
   <tr>
     <th>ID</th>
@@ -35,6 +33,7 @@
     </td>
   </tr>
 </table>
+</form>
+<footer th:insert="fragments/footer.html"></footer>
 </body>
 </html>
-``

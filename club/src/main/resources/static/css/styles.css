@@ -137,3 +137,29 @@ form input:focus {
 .welcome a:hover {
     background-color: #219150;
 }
+
+/* Alerts Styling */
+.alert {
+    margin: 20px auto;
+    padding: 15px 20px;
+    width: 50%;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 1.2em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9em;
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+}
