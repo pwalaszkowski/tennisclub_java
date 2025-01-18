@@ -1,9 +1,27 @@
-# TODO:
-Refactor README
-Refactor Styling
-Add maybe some fancy stuff to page
+# Table of Contents
+- [Overview](#overview)
+- [Tech Stack](#tech-stack)
+- [Running Application](#running-application)
+- [Functions](#functions)
+  - [Welcome Screen](#welcome-screen)
+  - [Players Screen](#players-screen)
+  - [Matches Screen](#matches-screen)
+- [Endpoints](#endpoints)
+  - [Player Endpoints](#players-endpoints)
+  - [Matches Endpoints](#matches-endpoints)
+  - [Example Requests/Responses](#example-requestsresponses)
+- [Database Access](#database-access)
 
+# Overview
+This is just simple Tennis Club application for master studies project.
+This application allow you to add new player then use added players to 
+add tennis match result.
 
+```info
+Be aware that database is empty at the beginning and it's starts
+as fresh for every new launch of application to manage this change 
+properties parameter: spring.jpa.hibernate.ddl-auto=create-drop
+```
 
 # Tech Stack
 
@@ -18,126 +36,116 @@ Add maybe some fancy stuff to page
     ./mvnw spring-boot:run
 
 # Functions
+The application allow you to add new player and use added player to use this in matches results.
 
-**Welcome Screen**
-![img.png](README_docs/img.png) 
+## Welcome Screen
 
-**Matches Screen**
-![img.png](README_docs/img1.png)
+![img.png](README_docs/img.png)
 
-**Add Result/Edit Result Screen**
-![img.png](README_docs/img2.png)
+## Players Screen
+
+![img_1.png](README_docs/img_1.png)
+
+![img_2.png](README_docs/img_2.png)
+
+## Matches Screen
+
+![img_3.png](README_docs/img_3.png)
+
+## 404 Error Screen
+![img.png](README_docs/img.png)
 
 # Endpoints:
-1. Get All Matches
-   * Endpoint: `/matches`
-   * Method: `GET`
-   * Description: Retrieves a list of all tennis matches.    
-   * Response
-   
-    ```json
-    [
-      {
-        "id": 1,
-        "player1": "Roger Federer",
-        "player2": "Rafael Nadal",
-        "winner": "Roger Federer",
-        "score": "6-4, 6-3"
-        },
-        {
-        "id": 2,
-        "player1": "Novak Djokovic",
-        "player2": "Andy Murray",
-        "winner": "Novak Djokovic",
-        "score": "7-6, 6-2"
-      }
-    ]
-   ```
 
-2. Add a New Match
-   * Endpoint: `/matches`
-   * Method: `POST`
-   * Description: Adds a new match result.
-   * Request Body (JSON):
-   
-   ```json
-    {
-      "player1": "Roger Federer",
-      "player2": "Rafael Nadal",
-      "winner": "Roger Federer",
-      "score": "6-4, 6-3"
+## Players Endpoints
+
+# PlayerController
+
+Base Path: `/players`
+
+| HTTP Method | Endpoint               | Description                               |
+|-------------|------------------------|-------------------------------------------|
+| GET         | `/players/new`         | Display the form for adding a new player. |
+| GET         | `/players/{id}/delete` | Delete a player.                          |
+
+## Matches Endpoints
+
+Base Path: `/matches`
+
+| HTTP Method | Endpoint               | Description                              |
+|-------------|------------------------|------------------------------------------|
+| GET         | `/matches/new`         | Display the form for adding a new match. |
+| GET         | `/matches/{id}`        | Edit an existing match.                  |
+| POST        | `/matches/{id}`        | Update an existing match.                |
+| GET         | `/matches/{id}/delete` | Delete a match.                          |
+
+## Example Requests/Responses
+
+* GET /players/{id}/delete
+```html
+GET http://localhost:8080/players/456/delete HTTP/1.1
+```
+
+```json
+{
+    "message": "Player deleted successfully",
+    "playerId": 456
+}
+```
+
+* GET /matches/{id}
+
+```html
+GET http://localhost:8080/matches/123 HTTP/1.1
+```
+
+```json
+{
+    "id": 123,
+    "player1": "John Doe",
+    "player2": "Jane Smith",
+    "date": "2025-01-01",
+    "score": "6-4, 7-5"
+}
+```
+
+* POST /matches/{id}
+```html
+POST http://localhost:8080/matches/123 HTTP/1.1
+Content-Type: application/json
+
+{
+    "player1": "John Doe",
+    "player2": "Jane Smith",
+    "date": "2025-01-01",
+    "score": "6-4, 7-5"
+}
+```
+
+```json
+{
+    "message": "Match updated successfully",
+    "updatedMatch": {
+        "id": 123,
+        "player1": "John Doe",
+        "player2": "Jane Smith",
+        "date": "2025-01-01",
+        "score": "6-4, 7-5"
     }
-   ```
-    
-   * Sample Response
-    
-   ```json
-    {
-      "id": 3,
-      "player1": "Roger Federer",
-      "player2": "Rafael Nadal",
-      "winner": "Roger Federer",
-      "score": "6-4, 6-3"
-    }
-   ```
+}
+```
 
-3. Get Match Details
-   * Endpoint: `/matches/{id}`
-   * Method: `GET`
-   * Description: Retrieves details of a specific match by its ID.
-   * Path Parameter:
-     * id (Long): Match ID, e.g., 1.
-   * Sample Response:
-   ```json
-    {
-      "id": 1,
-      "player1": "Roger Federer",
-      "player2": "Rafael Nadal",
-      "winner": "Roger Federer",
-      "score": "6-4, 6-3" 
-    }
-   ```
+* GET /matches/{id}/delete
+```html
+GET http://localhost:8080/matches/123/delete HTTP/1.1
+```
 
-4. Update a Match
-   * Endpoint: `/matches`
-   * Method: `POST`
-   * Description: Updates the details of an existing match.
-   * Request Body (JSON):
-    ```json
-    {
-      "id": 1,
-      "player1": "Roger Federer",
-      "player2": "Rafael Nadal",
-      "winner": "Rafael Nadal",
-      "score": "7-6, 6-4"
-    }
-    ```
-   * Sample Response:
-    ```json
-    {
-      "id": 1,
-      "player1": "Roger Federer",
-      "player2": "Rafael Nadal",
-      "winner": "Rafael Nadal",
-      "score": "7-6, 6-4"
-    }
-   ```
-
-5. Delete a Match
-
-* Endpoint: `/matches/{id}/delete`
-* Method: `POST`
-* Description: Deletes a match by its ID.
-* Path Parameter:
-    * id (Long): Match ID, e.g., 1.
-* Sample Response:
-    * `200 OK` if successful.
-
-6. Endpoints notes
-
-* The id field is auto-generated for new matches.
-* All fields (`player1`, `player2`, `winner`, and `score`) are required when adding or updating a match.
-* Make sure the application is running locally on port `8080` before testing.
+```json
+{
+    "message": "Match deleted successfully",
+    "matchId": 123
+}
+```
 
 # Database access:
 
@@ -151,6 +159,10 @@ Fill in the connection details on the H2 Console login page:
 * Username: sa (default username for H2).
 * Password: password
 
-![img.png](README_docs/img3.png)
+![img_4.png](README_docs/img_4.png)
 
-![img.png](README_docs/img4.png)
+Executing queries:
+
+![img_5.png](README_docs/img_5.png)
+
+![img_6.png](README_docs/img_6.png)

@@ -6,10 +6,9 @@
 </head>
 <body>
 <div th:include="fragments/nav.html"></div>
-<form>
 <h1>Match Form</h1>
 <div th:include="fragments/success.html"></div>
-  <form th:action="@{/matches}" th:object="${match}" method="post">
+<form th:action="@{/matches}" th:object="${match}" method="post">
     <input type="hidden" th:field="*{id}" />
 
     <label for="player1">Player 1:</label>
@@ -34,7 +33,6 @@
     <input type="text" id="score" th:field="*{score}" required />
 
     <button type="submit">Save</button>
-  </form>
 </form>
 <footer th:insert="fragments/footer.html"></footer>
 </body>

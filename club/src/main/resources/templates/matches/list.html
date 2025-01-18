@@ -21,9 +21,9 @@
   </tr>
   <tr th:each="match : ${matches}">
     <td th:text="${match.id}"></td>
-    <td th:text="${match.player1}"></td>
-    <td th:text="${match.player2}"></td>
-    <td th:text="${match.winner}"></td>
+    <td th:text="${match.player1.name}"></td>
+    <td th:text="${match.player2.name}"></td>
+    <td th:text="${match.winner.name}"></td>
     <td th:text="${match.score}"></td>
     <td>
       <div class="action-buttons">

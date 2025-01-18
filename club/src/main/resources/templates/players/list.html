@@ -7,6 +7,7 @@
 <body>
 <div th:include="fragments/nav.html"></div>
 <form>
+<form>
 <h1>Players</h1>
 <div th:include="fragments/success.html"></div>
 <center><p>Do not see the results? <a th:href="@{/players/new}" class="default-link">Add Player</a></p></center>
@@ -28,6 +29,7 @@
   </tr>
   </tbody>
 </table>
+</form>
 </form>
 <footer th:insert="fragments/footer.html"></footer>
 </body>
