@@ -1,5 +1,10 @@
 # Tech Stack
 
+* Java 17
+* Spring Boot 3.4.1
+* Thymeleaf + CSS
+* H2 Database (database is automatically drop after stop the application)
+
 # Running Application
     
     cd club
@@ -15,9 +20,6 @@
 
 **Add Result/Edit Result Screen**
 ![img.png](README_docs/img2.png)
-
-**Delete Screen**
-
 
 # Endpoints:
 1. Get All Matches
@@ -130,20 +132,18 @@
 * All fields (`player1`, `player2`, `winner`, and `score`) are required when adding or updating a match.
 * Make sure the application is running locally on port `8080` before testing.
 
-
 # Database access:
 
 http://localhost:8080/h2-console
 
 Fill in the connection details on the H2 Console login page:
 
-JDBC URL: jdbc:h2:mem:tennisdb
-tennisdb is the name of your in-memory database, as configured in your application.properties.
-Username: sa (default username for H2).
-Password: password
+* JDBC URL: jdbc:h2:mem:tennisdb
+  * tennisdb is the name of your in-memory database, as configured in your application.properties.
+
+* Username: sa (default username for H2).
+* Password: password
 
 ![img.png](README_docs/img3.png)
 
 ![img.png](README_docs/img4.png)
-
-    
