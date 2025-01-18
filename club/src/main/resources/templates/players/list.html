@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Players</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:include="fragments/nav.html"></div>
+<form>
+<h1>Players</h1>
+<div th:include="fragments/success.html"></div>
+<center><p>Do not see the results? <a th:href="@{/players/new}" class="default-link">Add Player</a></p></center>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="player : ${players}">
+    <td th:text="${player.id}"></td>
+    <td th:text="${player.name}"></td>
+    <td>
+      <a th:href="@{/players/{id}/delete(id=${player.id})}" class="button">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</form>
+<footer th:insert="fragments/footer.html"></footer>
+</body>
+</html>

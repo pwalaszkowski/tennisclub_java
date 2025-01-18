@@ -9,19 +9,32 @@
 <form>
 <h1>Match Form</h1>
 <div th:include="fragments/success.html"></div>
-</div>
-<form th:action="@{/matches}" th:object="${match}" method="post">
-  <input type="hidden" th:field="*{id}"/>
-  <label for="player1">Player 1:</label>
-  <input type="text" id="player1" th:field="*{player1}" required/>
-  <label for="player2">Player 2:</label>
-  <input type="text" id="player2" th:field="*{player2}" required/>
-  <label for="winner">Winner:</label>
-  <input type="text" id="winner" th:field="*{winner}" required/>
-  <label for="score">Score:</label>
-  <input type="text" id="score" th:field="*{score}" required/>
-  <button type="submit">Save</button>
-</form>
+  <form th:action="@{/matches}" th:object="${match}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label for="player1">Player 1:</label>
+    <select id="player1" th:field="*{player1}" required>
+      <option value="" disabled selected>Select Player 1</option>
+      <option th:each="player : ${players}" th:value="${player.id}" th:text="${player.name}"></option>
+    </select>
+
+    <label for="player2">Player 2:</label>
+    <select id="player2" th:field="*{player2}" required>
+      <option value="" disabled selected>Select Player 2</option>
+      <option th:each="player : ${players}" th:value="${player.id}" th:text="${player.name}"></option>
+    </select>
+
+    <label for="winner">Winner:</label>
+    <select id="winner" th:field="*{winner}" required>
+      <option value="" disabled selected>Select Winner</option>
+      <option th:each="player : ${players}" th:value="${player.id}" th:text="${player.name}"></option>
+    </select>
+
+    <label for="score">Score:</label>
+    <input type="text" id="score" th:field="*{score}" required />
+
+    <button type="submit">Save</button>
+  </form>
 </form>
 <footer th:insert="fragments/footer.html"></footer>
 </body>

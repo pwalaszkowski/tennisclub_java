@@ -5,19 +5,10 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Match {
+public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Player player1;
-
-    @ManyToOne
-    private Player player2;
-
-    @ManyToOne
-    private Player winner;
-
-    private String score;
+    private String name;
 }

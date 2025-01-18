@@ -183,3 +183,33 @@ a.default-link:hover {
     text-decoration: underline;
     color: #27ae60;
 }
+
+/* Dropdown Styles */
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #fff;
+    appearance: none; /* Removes the default OS-specific styles for select */
+    -webkit-appearance: none; /* Safari-specific reset */
+    -moz-appearance: none; /* Firefox-specific reset */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%2327ae60' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px 12px;
+    cursor: pointer;
+}
+
+form select:focus {
+    border-color: #27ae60;
+    outline: none;
+    box-shadow: 0 0 5px rgba(39, 174, 96, 0.5);
+}
+
+/* Optional: Container for better dropdown alignment */
+form select option {
+    padding: 10px;
+}
